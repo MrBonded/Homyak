@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тапаем хомяка</title>
+    <style>
+        body { text-align: center; }
+        #hamster { cursor: pointer; }
+        #score { font-size: 24px;}
+    </style>
+</head>
+<body>
+    <h1>Тапаем Хомяка!</h1>
+    <div id="score">Очки: 0</div>
+    <img id="hamster" src="img/hamster.png" alt="Хомяк" wisth="100">
+    <script>
+        let score = 0;
+         //Функция для обработки нажатий на хомяка
+         document.getElementById('hamster').onclick = function() {
+            score++; //Увеличиваем счет
+            document.getElementById('score').innerText = "Очки: " + score;
+            spawnPrize(); //Cпавним приз
+         };
+         //Функция для спавны приза
+         function spawnPrize() {
+            const prize = document.createElement('div');
+            prize.innerText = "+1 приз!";
+            prize.style.position = 'absolute';
+            prize.style.left = Math.random() * window.innerWidth + 'px';
+            prize.style.top = Math. random() * window.innerHeight + 'px';
+            document.body.appendChild(prize);
+            setTimeout( () => prize.remove (), 2000) //Удаляем приз через 2 секунды
+         }
+    </script>
+</body>
+</html>
